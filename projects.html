@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Progetti — Digitive</title>
+  <meta name="description" content="I progetti principali di Digitive.">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <meta property="og:title" content="Progetti — Digitive">
+  <meta property="og:description" content="Business Advising, Project Leadership, HostGuard, Casa Argento.">
+  <meta property="og:image" content="img/og-digitive.jpg">
+</head>
+<body>
+  <header class="nav-wrap">
+    <nav class="container nav">
+      <a class="brand" href="/"><img src="img/logo.svg" class="logo" alt="Digitive logo"> <span class="brand-text">Digitive</span></a>
+      <ul class="menu">
+        <li><a href="/">Home</a></li>
+        <li><a class="btn btn-primary" href="#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>I nostri Progetti</h1>
+      <p>Selezione di iniziative guidate da Digitive.</p>
+    </div>
+  </section>
+
+  <section class="projects-list">
+    <div class="container grid-2">
+      <article class="proj">
+        <img src="img/icn-adv.svg" class="proj-icn" alt="Business Advising icon">
+        <div>
+          <h3>Business Advising</h3>
+          <p>Analisi, focus, pricing, canali. Portiamo chiarezza e priorità operative per sbloccare risultati.</p>
+        </div>
+      </article>
+
+      <article class="proj">
+        <img src="img/icn-lead.svg" class="proj-icn" alt="Project Leadership icon">
+        <div>
+          <h3>Project Leadership</h3>
+          <p>Roadmap, sprint, stakeholder management e consegne in orario senza drammi.</p>
+        </div>
+      </article>
+
+      <article class="proj">
+        <img src="img/icn-hg.svg" class="proj-icn" alt="HostGuard icon">
+        <div>
+          <h3>HostGuard</h3>
+          <p>Piattaforma riservata per la reputazione degli ospiti. <a href="https://www.hostguard.it" target="_blank" rel="noopener">Scopri di più</a></p>
+        </div>
+      </article>
+
+      <article class="proj">
+        <img src="img/icn-ca.svg" class="proj-icn" alt="Casa Argento icon">
+        <div>
+          <h3>Casa Argento</h3>
+          <p>Gestione e marketing di strutture ricettive sul Lago di Garda, con risultati misurabili.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer id="contatti" class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="y"></span> Digitive</p>
+      <nav class="foot-nav">
+        <a href="/">Home</a>
+        <a href="mailto:info@digitive.it">info@digitive.it</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>

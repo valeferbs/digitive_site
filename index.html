@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digitive — Business Advising & Project Leadership</title>
+  <meta name="description" content="Consulenza, leadership di progetto e soluzioni digitali.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Digitive — Business Advising & Project Leadership">
+  <meta property="og:description" content="Progetti digitali concreti: HostGuard, Casa Argento e altro.">
+  <meta property="og:url" content="https://digitive.it/">
+  <meta property="og:image" content="img/og-digitive.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="fb:app_id" content="INSERISCI_FB_APP_ID">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  <header class="nav-wrap">
+    <nav class="container nav">
+      <!-- SOLO il logo, niente testo duplicato -->
+      <a class="brand" href="/">
+        <img src="img/digitive_logo.svg" alt="Digitive" class="logo">
+      </a>
+
+      <button class="hamburger" aria-label="Apri menu" onclick="document.body.classList.toggle('menu-open')">☰</button>
+      <ul class="menu">
+        <li><a href="projects.html">Progetti</a></li>
+        <li><a href="#servizi">Servizi</a></li>
+        <li><a class="btn btn-primary" href="#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <h1>Business Advising & Project Leadership</h1>
+      <p>Guidiamo idee in prodotti reali: chiaro, rapido, sostenibile.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="projects.html">Vedi i Progetti</a>
+        <a class="btn btn-ghost" href="#newsletter">Newsletter</a>
+      </div>
+    </div>
+    <div class="hero-bg"></div>
+  </section>
+
+  <section id="servizi" class="features">
+    <div class="container grid-3">
+      <div class="card">
+        <img class="icn" src="img/icn-adv.svg" alt="Business Advising icon">
+        <h3>Business Advising</h3>
+        <p>Validazione, posizionamento, go-to-market e priorità operative.</p>
+      </div>
+      <div class="card">
+        <img class="icn" src="img/icn-lead.svg" alt="Project Leadership icon">
+        <h3>Project Leadership</h3>
+        <p>Roadmap, sprint, risk-control e consegna senza drammi.</p>
+      </div>
+      <div class="card">
+        <img class="icn" src="img/icn-hg.svg" alt="Soluzioni Digitali icon">
+        <h3>Soluzioni Digitali</h3>
+        <p>Landing, SEO, automazioni e integrazioni AI quando servono.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="newsletter" class="newsletter">
+    <div class="container">
+      <h2>Resta aggiornata</h2>
+      <!-- Sostituisci con iframe Brevo -->
+      <iframe src="https://YOUR-BREVO-FORM-URL" width="100%" height="380" frameborder="0"></iframe>
+    </div>
+  </section>
+
+  <footer id="contatti" class="footer">
+    <div class="container footer-inner">
+      <p>©️ <span id="y"></span> Digitive</p>
+      <nav class="foot-nav">
+        <a href="projects.html">Progetti</a>
+        <a href="mailto:info@digitive.it">info@digitive.it</a>
+        <a href="#">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

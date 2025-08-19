@@ -1,0 +1,127 @@
+:root{
+  --dg-primary:#C5A90F;  /* oro Digitive */
+  --dg-ink:#000000;      /* testo principale (nero) */
+  --dg-muted:#757575;    /* testo secondario (grigio medio) */
+  --dg-bg:#F7F7F7;       /* sfondo chiaro */
+  --dg-card:#FFFFFF;     /* pannelli/box */
+  --radius:14px;
+}
+
+*{box-sizing:border-box}
+html,body{
+  margin:0; padding:0;
+  font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+  color:var(--dg-ink); background:#fff;
+}
+img{max-width:100%;display:block}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* NAV */
+.nav-wrap{position:sticky;top:0;z-index:50;background:transparent}
+.nav{
+  margin:16px auto; padding:10px 14px; border-radius:16px;
+  backdrop-filter:saturate(140%) blur(12px);
+  background:rgba(255,255,255,.78);
+  display:flex;align-items:center;justify-content:space-between;
+  border:1px solid rgba(0,0,0,.06)
+}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo{height:28px}
+.brand-text{font-weight:700;color:var(--dg-ink)}
+.menu{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+.menu a{color:var(--dg-ink);text-decoration:none;font-weight:500}
+.menu a:hover{color:var(--dg-primary)}
+.hamburger{display:none;border:0;background:transparent;font-size:22px}
+
+/* BUTTONS */
+.btn{
+  display:inline-block;padding:10px 16px;border-radius:10px;
+  text-decoration:none;font-weight:600;border:1px solid transparent
+}
+.btn-primary{background:var(--dg-primary);color:#fff;border-color:var(--dg-primary)}
+.btn-primary:hover{filter:brightness(1.05)}
+.btn-ghost{border-color:rgba(0,0,0,.12);color:var(--dg-ink);background:#fff}
+.btn-ghost:hover{background:#fafafa}
+
+/* HERO */
+.hero{
+  position:relative;padding:110px 0 90px;
+  background:linear-gradient(180deg,var(--dg-bg),transparent)
+}
+.hero-inner{position:relative;z-index:2;text-align:center}
+.hero h1{font-size:42px;line-height:1.1;margin:0 0 12px}
+.hero p{font-size:18px;margin:0 0 20px;color:var(--dg-muted)}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(1200px 400px at 50% 100%, rgba(197,169,15,.18), transparent 60%),
+    url('../img/bg-fade.jpg') no-repeat center/cover;
+  opacity:.65;animation:fadeUp .9s ease .15s both
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:.65;transform:none}}
+
+/* FEATURES */
+.features{padding:70px 0;background:#fff}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{
+  background:var(--dg-card);
+  border-radius:var(--radius);
+  box-shadow:0 8px 26px rgba(0,0,0,.06);
+  padding:22px;border:1px solid rgba(0,0,0,.05)
+}
+.card .icn{width:44px;height:44px;margin-bottom:10px}
+
+/* PAGE HERO */
+.page-hero{padding:70px 0;background:var(--dg-bg)}
+.page-hero h1{margin:0 0 8px;font-size:36px}
+.page-hero p{color:var(--dg-muted)}
+
+/* PROJECTS */
+.projects-list{padding:60px 0}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.proj{
+  display:flex;gap:16px;align-items:flex-start;background:#fff;
+  border:1px solid rgba(0,0,0,.06);border-radius:var(--radius);
+  padding:18px;box-shadow:0 8px 26px rgba(0,0,0,.04)
+}
+.proj-icn{width:40px;height:40px}
+.proj h3{margin:0 0 6px}
+.proj p{margin:0;color:var(--dg-muted)}
+.proj a{color:var(--dg-primary);text-decoration:none}
+.proj a:hover{text-decoration:underline}
+
+/* NEWSLETTER */
+.newsletter{padding:70px 0;background:#fff}
+.newsletter h2{text-align:center;margin:0 0 18px}
+.newsletter iframe{border-radius:var(--radius);box-shadow:0 8px 26px rgba(0,0,0,.06)}
+
+/* FOOTER */
+.footer{
+  padding:50px 0;
+  background:
+    radial-gradient(600px 200px at 50% -20%, rgba(197,169,15,.12), transparent 60%),
+    linear-gradient(180deg, #fff, var(--dg-bg))
+}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.foot-nav a{color:var(--dg-ink);text-decoration:none;margin-left:14px}
+.foot-nav a:hover{color:var(--dg-primary)}
+
+/* MOBILE */
+@media (max-width:900px){
+  .grid-3{grid-template-columns:1fr}
+  .grid-2{grid-template-columns:1fr}
+  .menu{display:none}
+  .hamburger{display:block}
+  body.menu-open .menu{
+    display:flex;position:absolute;right:24px;top:64px;background:#fff;
+    border:1px solid rgba(0,0,0,.06);border-radius:12px;padding:12px 14px;
+    flex-direction:column;gap:10px
+  }
+}
+
+/* Logo Digitive */
+.logo {
+  height: 90px;   /* aumenta da 40px a 60px o quello che preferisci */
+  width: auto;    /* mantiene proporzioni */
+}
