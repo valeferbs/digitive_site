@@ -29,6 +29,17 @@
   <meta name="twitter:image" content="https://www.digitive.it/img/og-home-v2.jpg">
   
   <title>Digitive – Strategie digitali e AI per PMI</title>
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N0YG14CJD7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-N0YG14CJD7');
+  </script>
+  
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -258,6 +269,62 @@
       </div>
     </div>
   </footer>
+
+  <!-- Cookie Banner -->
+  <div id="cookieBanner" class="cookie-banner">
+    <div class="cookie-banner__content">
+      <div class="cookie-banner__text">
+        <h3>🍪 Utilizziamo i cookie</h3>
+        <p>Utilizziamo cookie tecnici e di analisi per migliorare la tua esperienza. Puoi modificare le tue preferenze in qualsiasi momento.</p>
+      </div>
+      <div class="cookie-banner__actions">
+        <button class="cookie-btn cookie-btn--accept" onclick="acceptAllCookies()">Accetta tutti</button>
+        <button class="cookie-btn cookie-btn--reject" onclick="rejectAllCookies()">Rifiuta</button>
+        <button class="cookie-btn cookie-btn--preferences" onclick="openCookiePreferences()">Modifica preferenze</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cookie Preferences Modal -->
+  <div id="cookiePreferencesModal" class="cookie-preferences-modal">
+    <div class="cookie-preferences-modal__overlay" onclick="closeCookiePreferences()"></div>
+    <div class="cookie-preferences-modal__dialog">
+      <button class="cookie-preferences-modal__close" onclick="closeCookiePreferences()" aria-label="Chiudi">×</button>
+      <div class="cookie-preferences-modal__content">
+        <h2>🍪 Preferenze Cookie</h2>
+        <p>Gestisci le tue preferenze sui cookie per personalizzare la tua esperienza.</p>
+        
+        <div class="cookie-options">
+          <div class="cookie-option">
+            <div class="cookie-option__header">
+              <h3>Cookie Tecnici</h3>
+              <label class="cookie-toggle">
+                <input type="checkbox" checked disabled>
+                <span class="cookie-toggle__slider"></span>
+              </label>
+            </div>
+            <p>Necessari per il funzionamento del sito. Non possono essere disabilitati.</p>
+          </div>
+          
+          <div class="cookie-option">
+            <div class="cookie-option__header">
+              <h3>Cookie di Analisi</h3>
+              <label class="cookie-toggle">
+                <input type="checkbox" id="analyticsCookies">
+                <span class="cookie-toggle__slider"></span>
+              </label>
+            </div>
+            <p>Ci aiutano a migliorare il sito analizzando come lo utilizzi.</p>
+          </div>
+        </div>
+        
+        <div class="cookie-preferences-modal__actions">
+          <button class="cookie-btn cookie-btn--save" onclick="saveCookiePreferences()">Salva preferenze</button>
+          <button class="cookie-btn cookie-btn--cancel" onclick="closeCookiePreferences()">Annulla</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Contact Modal -->
   <div id="contactModal" class="contact-modal">
@@ -522,6 +589,101 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeContactModal();
+        closeCookiePreferences();
+      }
+    });
+
+    // Cookie Banner Functions
+    function showCookieBanner() {
+      const banner = document.getElementById('cookieBanner');
+      banner.classList.add('cookie-banner--visible');
+    }
+
+    function hideCookieBanner() {
+      const banner = document.getElementById('cookieBanner');
+      banner.classList.remove('cookie-banner--visible');
+    }
+
+    function acceptAllCookies() {
+      localStorage.setItem('cookieConsent', 'accepted');
+      localStorage.setItem('analyticsCookies', 'true');
+      hideCookieBanner();
+      enableAnalytics();
+    }
+
+    function rejectAllCookies() {
+      localStorage.setItem('cookieConsent', 'rejected');
+      localStorage.setItem('analyticsCookies', 'false');
+      hideCookieBanner();
+      disableAnalytics();
+    }
+
+    function enableAnalytics() {
+      if (typeof gtag !== 'undefined') {
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted'
+        });
+      }
+    }
+
+    function disableAnalytics() {
+      if (typeof gtag !== 'undefined') {
+        gtag('consent', 'update', {
+          'analytics_storage': 'denied'
+        });
+      }
+    }
+
+    function openCookiePreferences() {
+      const modal = document.getElementById('cookiePreferencesModal');
+      modal.classList.add('cookie-preferences-modal--open');
+      document.body.style.overflow = 'hidden';
+      
+      // Set current preferences
+      const analyticsCookies = localStorage.getItem('analyticsCookies') === 'true';
+      document.getElementById('analyticsCookies').checked = analyticsCookies;
+    }
+
+    function closeCookiePreferences() {
+      const modal = document.getElementById('cookiePreferencesModal');
+      modal.classList.remove('cookie-preferences-modal--open');
+      document.body.style.overflow = '';
+    }
+
+    function saveCookiePreferences() {
+      const analyticsCookies = document.getElementById('analyticsCookies').checked;
+      localStorage.setItem('cookieConsent', 'custom');
+      localStorage.setItem('analyticsCookies', analyticsCookies.toString());
+      closeCookiePreferences();
+      hideCookieBanner();
+      
+      if (analyticsCookies) {
+        enableAnalytics();
+      } else {
+        disableAnalytics();
+      }
+    }
+
+    // Check cookie consent on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const consent = localStorage.getItem('cookieConsent');
+      const analyticsCookies = localStorage.getItem('analyticsCookies') === 'true';
+      
+      if (!consent) {
+        // Show banner after a short delay
+        setTimeout(showCookieBanner, 1000);
+        // Disable analytics by default until consent
+        if (typeof gtag !== 'undefined') {
+          gtag('consent', 'default', {
+            'analytics_storage': 'denied'
+          });
+        }
+      } else if (analyticsCookies) {
+        // Enable analytics if previously accepted
+        enableAnalytics();
+      } else {
+        // Disable analytics if previously rejected
+        disableAnalytics();
       }
     });
   </script>
