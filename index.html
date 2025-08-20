@@ -400,9 +400,21 @@
           `;
           
           // Make entire card clickable
-          card.href = link.url;
-          card.target = '_blank';
-          card.rel = 'noopener noreferrer';
+          card.style.cursor = 'pointer';
+          card.addEventListener('click', () => {
+            window.open(link.url, '_blank', 'noopener,noreferrer');
+          });
+          
+          // Add hover effect for better UX
+          card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-4px)';
+            card.style.boxShadow = '0 8px 32px rgba(0,0,0,0.12)';
+          });
+          
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = '0 4px 16px rgba(0,0,0,0.08)';
+          });
           
           grid.appendChild(card);
         });
