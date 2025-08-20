@@ -12,6 +12,8 @@
   <meta property="og:title" content="Digitive">
   <meta property="og:description" content="Strategie digitali, AI e comunicazione per PMI.">
   <meta property="og:image" content="https://www.digitive.it/static/img/og-default.jpg">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+
 </head>
 <body>
   <header class="nav-wrap">
@@ -25,7 +27,7 @@
         <li><a href="/">Home</a></li>
         <li><a href="blog/">Blog</a></li>
         <li><a href="/#servizi">Servizi</a></li>
-        <li><a class="btn btn-primary" href="#contatti">Contatti</a></li>
+        <li><a href="#contatti">Contatti</a></li>
       </ul>
     </nav>
   </header>
@@ -39,32 +41,32 @@
 
   <section class="projects-list">
     <div class="container grid-2">
-      <article class="proj">
-        <img src="img/icn-adv.svg" class="proj-icn" alt="Business Advising icon">
+      <article class="proj" data-project="business" data-animation="suitcase">
+        <div class="lottie-container" id="lottie-suitcase"></div>
         <div>
           <h3>Business Advising</h3>
           <p>Analisi, focus, pricing, canali. Portiamo chiarezza e priorità operative per sbloccare risultati.</p>
         </div>
       </article>
 
-      <article class="proj">
-        <img src="img/icn-lead.svg" class="proj-icn" alt="Project Leadership icon">
+      <article class="proj" data-project="leadership" data-animation="assign">
+        <div class="lottie-container" id="lottie-assign"></div>
         <div>
           <h3>Project Leadership</h3>
           <p>Roadmap, sprint, stakeholder management e consegne in orario senza drammi.</p>
         </div>
       </article>
 
-      <article class="proj">
-        <img src="img/icn-hg.svg" class="proj-icn" alt="HostGuard icon">
+      <article class="proj" data-project="hostguard" data-animation="review">
+        <div class="lottie-container" id="lottie-review"></div>
         <div>
           <h3>HostGuard</h3>
           <p>Piattaforma riservata per la reputazione degli ospiti. <a href="https://www.hostguard.it" target="_blank" rel="noopener">Scopri di più</a></p>
         </div>
       </article>
 
-      <article class="proj">
-        <img src="img/icn-ca.svg" class="proj-icn" alt="Property Management icon">
+      <article class="proj" data-project="casaargento" data-animation="home">
+        <div class="lottie-container" id="lottie-home"></div>
         <div>
           <h3>Property Management</h3>
           <p>Gestione e marketing di strutture ricettive sul Lago di Garda, con risultati misurabili.</p>
@@ -72,6 +74,25 @@
       </article>
     </div>
   </section>
+
+  <!-- Modal Template -->
+  <div class="modal" id="projectModal" aria-hidden="true" role="dialog" aria-modal="false">
+    <div class="modal__overlay" tabindex="-1"></div>
+    <div class="modal__dialog" role="document">
+      <div class="modal__header">
+        <img src="" alt="" class="modal__image" id="modalImage">
+        <button class="modal__close" aria-label="Chiudi modal" tabindex="0">×</button>
+      </div>
+      <div class="modal__body">
+        <h2 class="modal__title" id="modalTitle"></h2>
+        <div class="modal__content" id="modalContent"></div>
+      </div>
+      <div class="modal__footer">
+        <a href="mailto:info@digitive.it?subject=Info%20Progetto%20" class="btn btn-primary modal__cta" id="modalCta">Scrivici</a>
+        <button class="btn btn-ghost modal__close-btn">Chiudi</button>
+      </div>
+    </div>
+  </div>
 
   <footer id="contatti" class="footer">
     <div class="container footer-inner">
@@ -85,6 +106,170 @@
     </div>
   </footer>
 
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    
+    // Lottie animations
+    const animations = {
+      'suitcase': { path: 'static/lottie/suitcase.json', container: 'lottie-suitcase' },
+      'assign': { path: 'static/lottie/assign.json', container: 'lottie-assign' },
+      'review': { path: 'static/lottie/review.json', container: 'lottie-review' },
+      'home': { path: 'static/lottie/home.json', container: 'lottie-home' }
+    };
+    
+    // Initialize Lottie animations
+    Object.keys(animations).forEach(key => {
+      const anim = animations[key];
+      const container = document.getElementById(anim.container);
+      if (container) {
+        const lottieAnim = lottie.loadAnimation({
+          container: container,
+          renderer: 'svg',
+          loop: false,
+          autoplay: false,
+          path: anim.path
+        });
+        
+        // Store animation reference for later use
+        container._lottie = lottieAnim;
+        
+        // Debug log
+        console.log(`Loaded Lottie animation: ${anim.path}`);
+      }
+    });
+    
+    // Project data
+    const projectsData = {
+      business: {
+        title: 'Business Advising',
+        image: 'static/img/projects/adv.jpg',
+        content: 'Dalla validazione dell\'idea al go-to-market. Lavoriamo su posizionamento, proposta di valore, pricing e priorità operative. Portiamo chiarezza e struttura in poche settimane, con deliverable concreti e metriche di impatto. Ideale per PMI e professionisti che vogliono accelerare senza dispersioni.',
+        ctaText: 'Scrivici'
+      },
+      leadership: {
+        title: 'Project Leadership',
+        image: 'static/img/projects/lead.jpg',
+        content: 'Guidiamo roadmap e sprint, coordiniamo team e stakeholder, riduciamo i rischi e assicuriamo consegne puntuali. Usiamo una leadership pragmatica: meno riunioni, più risultati. Trasparenti su tempi, budget e compromessi necessari.',
+        ctaText: 'Scrivici'
+      },
+      hostguard: {
+        title: 'HostGuard',
+        image: 'static/img/projects/hg.png',
+        content: 'Soluzione focalizzata sulla reputazione degli ospiti nel mondo hospitality. Processo di verifica snello, interfaccia essenziale e privacy al centro. Pensata per ridurre attriti, migliorare la selezione e sostenere esperienze migliori per host e viaggiatori.',
+        ctaText: 'Scrivici'
+      },
+      casaargento: {
+        title: 'Property Management',
+        image: 'static/img/projects/lago.jpg',
+        content: 'Gestione e marketing di strutture sul Lago di Garda: ottimizzazione listing, pricing dinamico, comunicazione e operations. Obiettivo: migliorare margini e recensioni attraverso un approccio dati + cura dell\'esperienza ospite.',
+        ctaText: 'Scrivici'
+      }
+    };
+    
+    // Modal functionality
+    const modal = document.getElementById('projectModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalContent');
+    const modalCta = document.getElementById('modalCta');
+    const modalClose = document.querySelector('.modal__close');
+    const modalCloseBtn = document.querySelector('.modal__close-btn');
+    const modalOverlay = document.querySelector('.modal__overlay');
+    
+    let scrollPosition = 0;
+    
+    // Open modal
+    function openModal(projectKey) {
+      const project = projectsData[projectKey];
+      if (!project) return;
+      
+      // Store scroll position
+      scrollPosition = window.pageYOffset;
+      
+      // Update modal content
+      modalImage.src = project.image;
+      modalImage.alt = project.title;
+      modalTitle.textContent = project.title;
+      modalContent.textContent = project.content;
+      modalCta.href = `mailto:info@digitive.it?subject=Info%20Progetto%20${encodeURIComponent(project.title)}`;
+      modalCta.textContent = project.ctaText;
+      
+      // Show modal
+      modal.setAttribute('aria-hidden', 'false');
+      modal.setAttribute('aria-modal', 'true');
+      modal.classList.add('modal--open');
+      document.body.style.overflow = 'hidden';
+      
+      // Focus first element
+      modalClose.focus();
+    }
+    
+    // Close modal
+    function closeModal() {
+      modal.setAttribute('aria-hidden', 'true');
+      modal.setAttribute('aria-modal', 'false');
+      modal.classList.remove('modal--open');
+      document.body.style.overflow = '';
+      window.scrollTo(0, scrollPosition);
+    }
+    
+    // Event listeners
+    document.querySelectorAll('.proj').forEach(card => {
+      card.addEventListener('click', () => {
+        const projectKey = card.dataset.project;
+        openModal(projectKey);
+      });
+      
+      // Keyboard support
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const projectKey = card.dataset.project;
+          openModal(projectKey);
+        }
+      });
+      
+      // Hover animations
+      card.addEventListener('mouseenter', () => {
+        const animationType = card.dataset.animation;
+        const lottieContainer = card.querySelector('.lottie-container');
+        if (lottieContainer && lottieContainer._lottie) {
+          lottieContainer._lottie.goToAndPlay(0);
+        }
+      });
+      
+      // Reset animation on mouse leave
+      card.addEventListener('mouseleave', () => {
+        const lottieContainer = card.querySelector('.lottie-container');
+        if (lottieContainer && lottieContainer._lottie) {
+          lottieContainer._lottie.goToAndStop(0, true);
+        }
+      });
+      
+      // Touch events for mobile
+      card.addEventListener('touchstart', (e) => {
+        const lottieContainer = card.querySelector('.lottie-container');
+        if (lottieContainer && lottieContainer._lottie) {
+          lottieContainer._lottie.goToAndPlay(0);
+        }
+      });
+      
+      // Make cards focusable
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', `Apri dettagli progetto ${card.querySelector('h3').textContent}`);
+    });
+    
+    modalClose.addEventListener('click', closeModal);
+    modalCloseBtn.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', closeModal);
+    
+    // ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('modal--open')) {
+        closeModal();
+      }
+    });
+  </script>
 </body>
 </html>
