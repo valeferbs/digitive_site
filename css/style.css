@@ -1464,7 +1464,17 @@ img{max-width:100%;display:block}
   .timeline{flex-direction:column;gap:32px}
   .timeline::before{display:none}
   .step-icon{width:60px;height:60px;margin-bottom:16px}
-  .step-content{position:static;opacity:1;visibility:visible;transform:none;width:100%;margin-top:16px}
+  .step-content{
+    position:static;
+    opacity:1;
+    visibility:visible;
+    transform:none;
+    width:100%;
+    margin-top:16px;
+    left:auto;
+    right:auto;
+    max-width:none;
+  }
   .step-content::before{display:none}
   
   /* COUNTERS */
