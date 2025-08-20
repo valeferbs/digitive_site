@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog — Digitive</title>
+  <meta name="description" content="Blog Digitive - articoli su business, project leadership e soluzioni digitali.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../img/favicon.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="../img/favicon.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="../img/favicon.png">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Blog — Digitive">
+  <meta property="og:description" content="Blog Digitive - articoli su business, project leadership e soluzioni digitali.">
+  <meta property="og:url" content="https://digitive.it/blog/">
+  <meta property="og:image" content="https://digitive.it/img/og-digitive.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Digitive">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog — Digitive">
+  <meta name="twitter:description" content="Blog Digitive - articoli su business, project leadership e soluzioni digitali.">
+  <meta name="twitter:image" content="https://digitive.it/img/og-digitive.jpg">
+</head>
+<body>
+  <header class="nav-wrap">
+    <nav class="container nav">
+      <a class="brand" href="/">
+        <img src="../img/digitive_logo.svg" alt="Digitive" class="logo" loading="eager">
+      </a>
+
+      <button class="hamburger" aria-label="Apri menu" onclick="document.body.classList.toggle('menu-open')">☰</button>
+      <ul class="menu">
+        <li><a href="../projects.html">Progetti</a></li>
+        <li><a href="../blog/">Blog</a></li>
+        <li><a href="../#servizi">Servizi</a></li>
+        <li><a class="btn btn-primary" href="../#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Blog</h1>
+      <p>Articoli su business, project leadership e soluzioni digitali.</p>
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      <div class="coming-soon">
+        <h2>Arriva presto</h2>
+        <p>Stiamo preparando contenuti interessanti su business advising, project leadership e soluzioni digitali.</p>
+        <a href="../" class="btn btn-primary">Torna alla home</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>©️ <span id="y"></span> Digitive</p>
+      <nav class="foot-nav">
+        <a href="../projects.html">Progetti</a>
+        <a href="mailto:info@digitive.it">info@digitive.it</a>
+        <a href="../privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

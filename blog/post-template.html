@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TITOLO_POST — Blog Digitive</title>
+  <meta name="description" content="DESCRIZIONE_POST">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../img/favicon.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="../img/favicon.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="../img/favicon.png">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="TITOLO_POST — Blog Digitive">
+  <meta property="og:description" content="DESCRIZIONE_POST">
+  <meta property="og:url" content="https://digitive.it/blog/URL_POST">
+  <meta property="og:image" content="https://digitive.it/img/og-digitive.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Digitive">
+  <meta property="article:published_time" content="YYYY-MM-DD">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TITOLO_POST — Blog Digitive">
+  <meta name="twitter:description" content="DESCRIZIONE_POST">
+  <meta name="twitter:image" content="https://digitive.it/img/og-digitive.jpg">
+</head>
+<body>
+  <header class="nav-wrap">
+    <nav class="container nav">
+      <a class="brand" href="/">
+        <img src="../img/digitive_logo.svg" alt="Digitive" class="logo" loading="eager">
+      </a>
+
+      <button class="hamburger" aria-label="Apri menu" onclick="document.body.classList.toggle('menu-open')">☰</button>
+      <ul class="menu">
+        <li><a href="../projects.html">Progetti</a></li>
+        <li><a href="../blog/">Blog</a></li>
+        <li><a href="../#servizi">Servizi</a></li>
+        <li><a class="btn btn-primary" href="../#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <article class="blog-post">
+    <div class="container">
+      <header class="post-header">
+        <h1>TITOLO_POST</h1>
+        <div class="post-meta">
+          <time datetime="YYYY-MM-DD">DATA_POST</time>
+          <span class="post-author">Digitive</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+        <!-- CONTENUTO_POST_QUI -->
+        <p>Template per i post del blog. Sostituisci TITOLO_POST, DESCRIZIONE_POST, URL_POST, DATA_POST e aggiungi il contenuto.</p>
+      </div>
+
+      <footer class="post-footer">
+        <a href="../blog/" class="btn btn-ghost">← Torna al blog</a>
+      </footer>
+    </div>
+  </article>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>©️ <span id="y"></span> Digitive</p>
+      <nav class="foot-nav">
+        <a href="../projects.html">Progetti</a>
+        <a href="mailto:info@digitive.it">info@digitive.it</a>
+        <a href="../privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

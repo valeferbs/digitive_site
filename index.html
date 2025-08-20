@@ -8,36 +8,41 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 
   <!-- Favicon -->
-  <link rel="icon" href="img/favicon.png" type="image/png">
-  <link rel="shortcut icon" href="img/favicon.ico">
-  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="icon" href="img/favicon.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="img/favicon.png">
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Digitive — Business Advising & Project Leadership">
-  <meta property="og:description" content="Progetti digitali concreti: HostGuard, Casa Argento e altro.">
+  <meta property="og:description" content="Consulenza, leadership di progetto e soluzioni digitali. Guidiamo idee in prodotti reali: chiaro, rapido, sostenibile.">
   <meta property="og:url" content="https://digitive.it/">
-  <meta property="og:image" content="img/og-digitive.jpg">
+  <meta property="og:image" content="https://digitive.it/img/og-digitive.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="fb:app_id" content="INSERISCI_FB_APP_ID">
+  <meta property="og:site_name" content="Digitive">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Digitive — Business Advising & Project Leadership">
+  <meta name="twitter:description" content="Consulenza, leadership di progetto e soluzioni digitali. Guidiamo idee in prodotti reali: chiaro, rapido, sostenibile.">
+  <meta name="twitter:image" content="https://digitive.it/img/og-digitive.jpg">
 </head>
 <body>
   <header class="nav-wrap">
     <nav class="container nav">
       <!-- SOLO il logo, niente testo duplicato -->
       <a class="brand" href="/">
-        <img src="img/digitive_logo.svg" alt="Digitive" class="logo">
+        <img src="img/digitive_logo.svg" alt="Digitive" class="logo" loading="eager">
       </a>
 
       <button class="hamburger" aria-label="Apri menu" onclick="document.body.classList.toggle('menu-open')">☰</button>
       <ul class="menu">
         <li><a href="projects.html">Progetti</a></li>
+        <li><a href="blog/">Blog</a></li>
         <li><a href="#servizi">Servizi</a></li>
-        <li><a class="btn btn-primary" href="#contatti">Contatti</a></li>
+        <li><a href="#contatti">Contatti</a></li>
       </ul>
     </nav>
   </header>
@@ -56,18 +61,18 @@
 
   <section id="servizi" class="features">
     <div class="container grid-3">
-      <div class="card">
-        <img class="icn" src="img/icn-adv.svg" alt="Business Advising icon">
+      <div class="card" data-animation="up">
+        <div class="lottie-container" id="lottie-up"></div>
         <h3>Business Advising</h3>
         <p>Validazione, posizionamento, go-to-market e priorità operative.</p>
       </div>
-      <div class="card">
-        <img class="icn" src="img/icn-lead.svg" alt="Project Leadership icon">
+      <div class="card" data-animation="star">
+        <div class="lottie-container" id="lottie-star"></div>
         <h3>Project Leadership</h3>
         <p>Roadmap, sprint, risk-control e consegna senza drammi.</p>
       </div>
-      <div class="card">
-        <img class="icn" src="img/icn-hg.svg" alt="Soluzioni Digitali icon">
+      <div class="card" data-animation="pc">
+        <div class="lottie-container" id="lottie-pc"></div>
         <h3>Soluzioni Digitali</h3>
         <p>Landing, SEO, automazioni e integrazioni AI quando servono.</p>
       </div>
@@ -76,9 +81,12 @@
 
   <section id="newsletter" class="newsletter">
     <div class="container">
-      <h2>Resta aggiornata</h2>
-      <!-- Sostituisci con iframe Brevo -->
-      <iframe src="https://YOUR-BREVO-FORM-URL" width="100%" height="380" frameborder="0"></iframe>
+      <h2>Resta aggiornato con letture selezionate</h2>
+      <p class="section-subtitle">Ogni settimana, 3 spunti veloci dal mondo digitale.</p>
+      
+      <div id="curated-links" class="curated-links">
+        <div class="loading">Caricamento...</div>
+      </div>
     </div>
   </section>
 
@@ -87,14 +95,142 @@
       <p>©️ <span id="y"></span> Digitive</p>
       <nav class="foot-nav">
         <a href="projects.html">Progetti</a>
+        <a href="blog/">Blog</a>
         <a href="mailto:info@digitive.it">info@digitive.it</a>
-        <a href="#">Privacy</a>
+        <a href="privacy.html">Privacy</a>
       </nav>
     </div>
   </footer>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+    
+    // Lottie animations
+    const animations = {
+      'up': { path: 'static/lottie/up.json', container: 'lottie-up' },
+      'star': { path: 'static/lottie/star.json', container: 'lottie-star' },
+      'pc': { path: 'static/lottie/pc.json', container: 'lottie-pc' }
+    };
+    
+    // Initialize Lottie animations
+    Object.keys(animations).forEach(key => {
+      const anim = animations[key];
+      const container = document.getElementById(anim.container);
+      if (container) {
+        const lottieAnim = lottie.loadAnimation({
+          container: container,
+          renderer: 'svg',
+          loop: false,
+          autoplay: false,
+          path: anim.path
+        });
+        
+        // Store animation reference for later use
+        container._lottie = lottieAnim;
+        
+        // Debug log
+        console.log(`Loaded Lottie animation: ${anim.path}`);
+      }
+    });
+    
+    // Intersection Observer for card animations
+    const observerOptions = {
+      threshold: 0.3,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          const card = entry.target;
+          const animationType = card.dataset.animation;
+          
+          // Add glow effect and trigger animation
+          setTimeout(() => {
+            card.classList.add('card-glow');
+            card.classList.add('card-fade-in');
+            
+            // Play Lottie animation
+            const lottieContainer = card.querySelector('.lottie-container');
+            if (lottieContainer && lottieContainer._lottie) {
+              lottieContainer._lottie.play();
+            }
+          }, index * 200); // Stagger animation
+          
+          cardObserver.unobserve(card);
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all cards
+    document.querySelectorAll('.card[data-animation]').forEach(card => {
+      cardObserver.observe(card);
+    });
+    
+    // Load curated links
+    async function loadCuratedLinks() {
+      const container = document.getElementById('curated-links');
+      if (!container) return;
+      
+      try {
+        // Cache busting
+        const timestamp = new Date().getTime();
+        const response = await fetch(`data/links.json?t=${timestamp}`);
+        
+        if (!response.ok) {
+          throw new Error('Failed to load links');
+        }
+        
+        const links = await response.json();
+        
+        if (!links || links.length === 0) {
+          container.innerHTML = '<div class="error">Nessun link disponibile al momento.</div>';
+          return;
+        }
+        
+        const grid = document.createElement('div');
+        grid.className = 'curated-grid';
+        
+        links.forEach(link => {
+          const card = document.createElement('article');
+          card.className = 'curated-card';
+          
+          const imageUrl = link.image || 'img/og-digitive.jpg';
+          const imageAlt = link.title;
+          
+          card.innerHTML = `
+            <div class="curated-card-image">
+              <img src="${imageUrl}" alt="${imageAlt}" loading="lazy">
+            </div>
+            <div class="curated-card-content">
+              <h3>${link.title}</h3>
+              <p>${link.description}</p>
+            </div>
+          `;
+          
+          // Make entire card clickable
+          card.href = link.url;
+          card.target = '_blank';
+          card.rel = 'noopener noreferrer';
+          
+          grid.appendChild(card);
+        });
+        
+        container.innerHTML = '';
+        container.appendChild(grid);
+        
+      } catch (error) {
+        console.error('Error loading curated links:', error);
+        container.innerHTML = '<div class="error">Nessun link disponibile al momento.</div>';
+      }
+    }
+    
+    // Load links when page is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadCuratedLinks);
+    } else {
+      loadCuratedLinks();
+    }
   </script>
 </body>
 </html>

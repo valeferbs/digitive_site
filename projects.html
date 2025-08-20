@@ -14,9 +14,15 @@
 <body>
   <header class="nav-wrap">
     <nav class="container nav">
-      <a class="brand" href="/"><img src="img/logo.svg" class="logo" alt="Digitive logo"> <span class="brand-text">Digitive</span></a>
+      <a class="brand" href="/">
+        <img src="img/digitive_logo.svg" alt="Digitive" class="logo" loading="eager">
+      </a>
+
+      <button class="hamburger" aria-label="Apri menu" onclick="document.body.classList.toggle('menu-open')">☰</button>
       <ul class="menu">
         <li><a href="/">Home</a></li>
+        <li><a href="blog/">Blog</a></li>
+        <li><a href="/#servizi">Servizi</a></li>
         <li><a class="btn btn-primary" href="#contatti">Contatti</a></li>
       </ul>
     </nav>
@@ -56,9 +62,9 @@
       </article>
 
       <article class="proj">
-        <img src="img/icn-ca.svg" class="proj-icn" alt="Casa Argento icon">
+        <img src="img/icn-ca.svg" class="proj-icn" alt="Property Management icon">
         <div>
-          <h3>Casa Argento</h3>
+          <h3>Property Management</h3>
           <p>Gestione e marketing di strutture ricettive sul Lago di Garda, con risultati misurabili.</p>
         </div>
       </article>
@@ -70,7 +76,9 @@
       <p>© <span id="y"></span> Digitive</p>
       <nav class="foot-nav">
         <a href="/">Home</a>
+        <a href="blog/">Blog</a>
         <a href="mailto:info@digitive.it">info@digitive.it</a>
+        <a href="privacy.html">Privacy</a>
       </nav>
     </div>
   </footer>
